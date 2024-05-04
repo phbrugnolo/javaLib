@@ -10,8 +10,9 @@ public class CadastroLivro {
     public static void cadastrarLivro(List<Livro> listaLivros) {
 
         Scanner scan = new Scanner(System.in);
+        
+        try {
 
-        try{
             System.out.println("Digite o nome do autor:");
             String autor = scan.nextLine();
             System.out.println("Digite o título do livro:");
@@ -20,14 +21,13 @@ public class CadastroLivro {
             int ano = scan.nextInt();
             System.out.println("Digite a quantidade de exemplares disponíveis:");
             int quantidade = scan.nextInt();
-    
+
             Livro novoLivro = new Livro(autor, titulo, ano, quantidade);
             listaLivros.add(novoLivro);
             System.out.println("Livro cadastrado com sucesso!");
-        }finally {
+        } finally {
             scan.close();
         }
 
     }
 }
-

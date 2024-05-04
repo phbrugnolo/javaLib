@@ -1,13 +1,14 @@
 package controller;
 
 public class User extends Pessoa{
-    private String email, endereco, tel;
+    private String email;
+    private Integer id;
+    private static int nextId = 0;
 
-    public User(String nome, String email, String endereco, String tel) {
-        super(nome);
+    public User(String nome, String endero, String tel, String email) {
+        super(nome, endero, tel);
         this.email = email;
-        this.endereco = endereco;
-        this.tel = tel;
+        this.id = nextId++;
     }
 
     public String getEmail() {
@@ -18,30 +19,16 @@ public class User extends Pessoa{
         this.email = email;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "User [nome= " + super.getNome() + ", email=" + email + ", endereco=" + endereco + ", tel=" + tel + "]";
-    }
-
-    
-
-    
-
-    
+        return "User [email=" + email + ", id=" + id + "]";
+    }    
 }

@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,21 +5,20 @@ import java.util.Scanner;
 import controller.Livro;
 import view.*;
 
-
-
 public class App {
     private static List<Livro> listaLivros = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
     
+
     public static void main(String[] args) throws Exception {
-
         exibirMenu();
-
+        
+        
     }
-
+    
     public static void exibirMenu() {
-        Scanner scanner = new Scanner(System.in);
         int opcao;
-
+        
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Cadastrar livro");
@@ -32,16 +29,17 @@ public class App {
             System.out.println("6. Relatórios");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
+
             opcao = scanner.nextInt();
+            scanner.nextLine();
 
             switch (opcao) {
                 case 0:
                     System.out.println("Saindo...");
-                    scanner.close();
                     break;
                 case 1:
                     CadastroLivro.cadastrarLivro(listaLivros);
-                    System.out.println(listaLivros + "\n");
+                    System.out.println(listaLivros);
                     break;
                 case 2:
                     // pesquisarLivro();
