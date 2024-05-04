@@ -34,6 +34,11 @@ public class User extends Pessoa{
         this.tel = tel;
     }
 
+    @Override
+    public String toString() {
+        return "User [nome= " + super.getNome() + ", email=" + email + ", endereco=" + endereco + ", tel=" + tel + "]";
+    }
+
     
 
     

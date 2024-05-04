@@ -1,19 +1,27 @@
-package view;
+
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import model.*;
-import controller.*;
+
+import controller.Livro;
+import view.*;
+
+
 
 public class App {
+    private static List<Livro> listaLivros = new ArrayList<>();
+    
     public static void main(String[] args) throws Exception {
-      
+
+        exibirMenu();
+
+    }
+
+    public static void exibirMenu() {
         Scanner scanner = new Scanner(System.in);
         int opcao;
 
-        Livros Biblioteca = new Livros(new ArrayList<>());
-        Users Usuarios = new Users(new ArrayList<>());
-
-   
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Cadastrar livro");
@@ -32,49 +40,27 @@ public class App {
                     scanner.close();
                     break;
                 case 1:
-                    Biblioteca.add(new Livro());
+                    CadastroLivro.cadastrarLivro(listaLivros);
+                    System.out.println(listaLivros + "\n");
                     break;
                 case 2:
-                    pesquisarLivro();
+                    // pesquisarLivro();
                     break;
                 case 3:
-                    cadastrarUsuario();
+                    // cadastrarUsuario();
                     break;
                 case 4:
-                    emprestarLivro();
+                    // emprestarLivro();
                     break;
                 case 5:
-                    devolverLivro();
+                    // devolverLivro();
                     break;
                 case 6:
-                    relatorios();
+                    // relatorios();
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
         } while (opcao != 0);
-    }
-
-    
-
-
-    public static void pesquisarLivro() {
-        System.out.println("Pesquisar livro...");
-    }
-
-    public static void cadastrarUsuario() {
-        System.out.println("Cadastrar usuário...");
-    }
-
-    public static void emprestarLivro() {
-        System.out.println("Emprestar livro...");
-    }
-
-    public static void devolverLivro() {
-        System.out.println("Devolver livro...");
-    }
-
-    public static void relatorios() {
-        System.out.println("Gerar relatórios...");
     }
 }

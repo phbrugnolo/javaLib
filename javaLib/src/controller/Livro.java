@@ -1,23 +1,17 @@
 package controller;
 
-import java.util.Scanner;
-
-public class Livro extends Pessoa{
+public class Livro {
     private String autor, titulo;
     private int quantidade, ano;
 
-    Scanner scan = new Scanner(System.in);
-    
-    public Livro() {
-        System.out.println("Digite o nome do autor");
-        this.autor = scan.nextLine();
-        System.out.println("Digite o título do livro");
-        this.titulo = scan.nextLine();
-        System.out.println("Digite o ano de publicação");
-        this.ano = scan.nextInt();
-        System.out.println("Digite a quantidade de exemplares disponíveis");
-        this.quantidade = scan.nextInt();
 
+    
+
+    public Livro(String autor, String titulo, int quantidade, int ano) {
+        this.autor = autor;
+        this.titulo = titulo;
+        this.quantidade = quantidade;
+        this.ano = ano;
     }
 
     public String getAutor() {
@@ -51,5 +45,14 @@ public class Livro extends Pessoa{
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    @Override
+    public String toString() {
+        return "Livro [autor=" + autor + ", titulo=" + titulo + ", quantidade=" + quantidade + ", ano=" + ano + "]";
+    }
+
+
+    
+   
 }
  
