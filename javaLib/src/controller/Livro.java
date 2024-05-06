@@ -1,25 +1,14 @@
 package controller;
 
 public class Livro {
-    private String autor, titulo;
-    private int quantidade, ano;
+    private String titulo, autor;
+    private int ano, quantidade;
 
-
-    
-
-    public Livro(String autor, String titulo, int quantidade, int ano) {
-        this.autor = autor;
+    public Livro(String titulo, String autor, int ano, int quantidade) {
         this.titulo = titulo;
-        this.quantidade = quantidade;
-        this.ano = ano;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
         this.autor = autor;
+        this.ano = ano;
+        this.quantidade = quantidade;
     }
 
     public String getTitulo() {
@@ -28,6 +17,14 @@ public class Livro {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public int getAno() {
@@ -48,11 +45,7 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro [autor=" + autor + ", titulo=" + titulo + ", quantidade=" + quantidade + ", ano=" + ano + "]";
+        return "Livro [titulo=" + titulo + ", autor=" + autor + ", ano=" + ano + ", quantidade=" + quantidade + "]";
     }
 
-
-    
-   
 }
- 

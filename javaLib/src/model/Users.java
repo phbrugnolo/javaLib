@@ -4,33 +4,30 @@ import java.util.List;
 import controller.User;
 
 public class Users extends Buscar<User> {
-    private List<User> users;
 
-
-    public Users(List<User> lista, List<User> users) {
+    public Users(List<User> lista) {
         super(lista);
-        this.users = users;
     }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
 
     @Override
     public User buscar(String nome) {
-        return users.stream()
-                      .filter(u -> u.getNome().equals(nome))
-                      .findFirst()
-                      .orElse(null);
+        return lista.stream()
+                .filter(u -> u.getNome().toLowerCase().trim().equals(nome.toLowerCase()))
+                .findFirst()
+                .orElse(null);
     }
 
     public void adicionarUser(User user) {
-        users.add(user);
+
+        if (buscar(user.getNome()) == null)
+            lista.add(user);
+
     }
 
+    @Override
+    public String toString() {
+        return "Users [users=" + lista + "]";
+    }
+
+    
 }

@@ -15,7 +15,12 @@ public abstract class Buscar<T> {
     public void adicionar(T objeto) {
         lista.add(objeto);
     }
+
+    public List<T> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<T> lista) {
+        this.lista = lista;
+    }
 }
-
-
-

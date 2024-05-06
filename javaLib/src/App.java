@@ -3,22 +3,22 @@ import java.util.List;
 import java.util.Scanner;
 
 import controller.Livro;
+import controller.User;
 import view.*;
 
 public class App {
     private static List<Livro> listaLivros = new ArrayList<>();
+    private static List<User> listaUsers = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
-    
 
     public static void main(String[] args) throws Exception {
-        exibirMenu();
-        
-        
+        exibirMenu(scanner);
+
     }
-    
-    public static void exibirMenu() {
+
+    public static void exibirMenu(Scanner scan) {
         int opcao;
-        
+
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Cadastrar livro");
@@ -30,7 +30,7 @@ public class App {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
 
-            opcao = scanner.nextInt();
+            opcao = scan.nextInt();
             scanner.nextLine();
 
             switch (opcao) {
@@ -38,14 +38,13 @@ public class App {
                     System.out.println("Saindo...");
                     break;
                 case 1:
-                    CadastroLivro.cadastrarLivro(listaLivros);
-                    System.out.println(listaLivros);
+                    LivroView.cadastrarLivro(listaLivros, scanner);
                     break;
                 case 2:
-                    // pesquisarLivro();
+                    LivroView.pesquisarLivro(listaLivros, scanner);
                     break;
                 case 3:
-                    // cadastrarUsuario();
+                    CadastroUser.cadastrarUser(listaUsers, scanner);
                     break;
                 case 4:
                     // emprestarLivro();
