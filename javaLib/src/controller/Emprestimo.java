@@ -6,22 +6,24 @@ import java.util.Scanner;
 import model.Livros;
 import java.util.ArrayList;
 
-public class Emprestimo {
+public class Emprestimo extends Livros {
 
     private List<Livro> livrosEmprestados;
-    private Livros livrosDisponiveis;
     private String nome;
 
-    public Emprestimo(Livros livrosDisponiveis) {
+    public Emprestimo(List<Livro> lista) {
+        super(lista);
         this.livrosEmprestados = new ArrayList<>();
-        this.livrosDisponiveis = livrosDisponiveis;
+        this.nome = "";
     }
 
     public void emprestarLivro(Livros listaLivros, Scanner scan) {
         System.out.println("Digite o nome do livro: ");
         nome = scan.nextLine();
 
-        if (livrosDisponiveis.buscar(nome) != null) {
+        Livro livro = listaLivros.buscar(nome);
+
+        if (livro != null) {
             livrosEmprestados.add(livro);
             livro.setQuantidade(livro.getQuantidade() - 1);
         } else {
@@ -33,9 +35,11 @@ public class Emprestimo {
         System.out.println("Digite o nome do livro: ");
         nome = scan.nextLine();
 
-        if (livrosDisponiveis.buscar(nome) != null) {
-            livrosEmprestados.add(listaLivros.get);
-            livro.setQuantidade(livro.getQuantidade() - 1);
+        Livro livro = listaLivros.buscar(nome);
+
+        if (listaLivros.buscar(nome) != null) {
+            livrosEmprestados.remove(livro);
+            livro.setQuantidade(livro.getQuantidade() + 1);
         } else {
             System.out.println("Livro indisponivel");
         }

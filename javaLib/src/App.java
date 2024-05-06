@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import controller.Emprestimo;
 import controller.Livro;
 import controller.User;
 import view.*;
@@ -9,6 +10,7 @@ import view.*;
 public class App {
     private static List<Livro> listaLivros = new ArrayList<>();
     private static List<User> listaUsers = new ArrayList<>();
+    private static Emprestimo livEmprestimo = new Emprestimo(listaLivros);
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
@@ -47,10 +49,12 @@ public class App {
                     CadastroUser.cadastrarUser(listaUsers, scanner);
                     break;
                 case 4:
-                    // emprestarLivro();
+                    livEmprestimo.emprestarLivro(livEmprestimo, scanner);
+                    System.out.println(listaLivros);
                     break;
                 case 5:
-                    // devolverLivro();
+                    livEmprestimo.devolverLivro(livEmprestimo, scanner);
+                    System.out.println(listaLivros);
                     break;
                 case 6:
                     // relatorios();
