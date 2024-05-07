@@ -10,24 +10,30 @@ public class Users extends Buscar<User> {
     }
 
     @Override
-    public User buscar(String nome) {
+    public User buscar(String email) {
         return lista.stream()
-                .filter(u -> u.getNome().toLowerCase().trim().equals(nome.toLowerCase()))
+                .filter(u -> u.getEmail().toLowerCase().trim().equals(email.toLowerCase()))
                 .findFirst()
                 .orElse(null);
     }
 
     public void adicionarUser(User user) {
-
-        if (buscar(user.getNome()) == null)
-            lista.add(user);
-
+        String email = user.getEmail();
+        if (email.contains("@") && email.indexOf(".") > email.indexOf("@")) {
+            if (buscar(email) == null) {
+                lista.add(user);
+            } else {
+                throw new IllegalArgumentException("Já existe um usuário com o mesmo e-mail na lista.");
+            }
+        } else {
+            throw new IllegalArgumentException("O email inserido não é válido.");
+        }
     }
+    
 
     @Override
     public String toString() {
         return "Users [users=" + lista + "]";
     }
 
-    
 }

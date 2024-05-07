@@ -43,6 +43,15 @@ public class Livro implements Comparable<Livro> {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+    
+    public int getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(int emprestimos) {
+        this.emprestimos = emprestimos;
+    }
+    
 
     @Override
     public String toString() {
@@ -57,5 +66,6 @@ public class Livro implements Comparable<Livro> {
     public void emprestar(){
         this.emprestimos++;
     }
+
 
 }

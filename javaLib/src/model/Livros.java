@@ -18,10 +18,11 @@ public class Livros extends Buscar<Livro> {
     }
 
     public void adicionarLivro(Livro livro) {
-
-        if (buscar(livro.getTitulo()) == null)
+        if (buscar(livro.getTitulo()) == null) {
             lista.add(livro);
-
+        } else {
+            throw new IllegalArgumentException("Já existe um livro com o mesmo título na lista.");
+        }
     }
 
     @Override

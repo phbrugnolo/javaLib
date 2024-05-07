@@ -1,20 +1,31 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import controller.Emprestimo;
-import controller.Livro;
-import controller.User;
+import controller.*;
+import model.Livros;
+import model.Users;
 import view.*;
 
 public class App {
-    private static List<Livro> listaLivros = new ArrayList<>();
-    private static List<User> listaUsers = new ArrayList<>();
-    private static Emprestimo livEmprestimo = new Emprestimo(listaLivros);
+    private static Livros listaLivros = new Livros(new ArrayList<>());
+    private static Users listaUsers = new Users(new ArrayList<>());
+    private static Emprestimo livEmprestimo = new Emprestimo();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        exibirMenu(scanner);
+
+        registrarShutdownHook();
+
+        try {
+            exibirMenu(scanner);
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida. Certifique-se de inserir um número.");
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro inesperado: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
 
     }
 
@@ -49,19 +60,25 @@ public class App {
                     CadastroUser.cadastrarUser(listaUsers, scanner);
                     break;
                 case 4:
-                    livEmprestimo.emprestarLivro(livEmprestimo, scanner);
-                    System.out.println(listaLivros);
+                    livEmprestimo.emprestarLivro(listaLivros, scanner);
                     break;
                 case 5:
-                    livEmprestimo.devolverLivro(livEmprestimo, scanner);
-                    System.out.println(listaLivros);
+                    livEmprestimo.devolverLivro(listaLivros, scanner);
                     break;
                 case 6:
-                    // relatorios();
+                    livEmprestimo.gerarRelatorio();
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
         } while (opcao != 0);
+    }
+
+    private static void registrarShutdownHook() {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                System.out.println("Programa fechado com Ctrl + C");
+            }
+        });
     }
 }

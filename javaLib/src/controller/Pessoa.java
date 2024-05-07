@@ -1,9 +1,10 @@
 package controller;
 
 public class Pessoa {
-    private String nome, endero, tel;
+    private String nome, endero;
+    private int tel;
 
-    public Pessoa(String nome, String endero, String tel) {
+    public Pessoa(String nome, String endero, int tel) {
         this.nome = nome;
         this.endero = endero;
         this.tel = tel;
@@ -25,11 +26,11 @@ public class Pessoa {
         this.endero = endero;
     }
 
-    public String getTel() {
+    public int getTel() {
         return tel;
     }
 
-    public void setTel(String tel) {
+    public void setTel(int tel) {
         this.tel = tel;
     }
 }

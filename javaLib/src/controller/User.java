@@ -5,7 +5,7 @@ public class User extends Pessoa{
     private Integer id;
     private static int nextId = 0;
 
-    public User(String nome, String endero, String tel, String email) {
+    public User(String nome, String endero, int tel, String email) {
         super(nome, endero, tel);
         this.email = email;
         this.id = nextId++;
