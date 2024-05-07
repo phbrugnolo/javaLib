@@ -1,14 +1,15 @@
 package controller;
 
-public class Livro {
+public class Livro implements Comparable<Livro> {
     private String titulo, autor;
-    private int ano, quantidade;
+    private int ano, quantidade, emprestimos;
 
     public Livro(String titulo, String autor, int ano, int quantidade) {
         this.titulo = titulo;
         this.autor = autor;
         this.ano = ano;
         this.quantidade = quantidade;
+        this.emprestimos = 0;
     }
 
     public String getTitulo() {
@@ -46,6 +47,15 @@ public class Livro {
     @Override
     public String toString() {
         return "Livro [titulo=" + titulo + ", autor=" + autor + ", ano=" + ano + ", quantidade=" + quantidade + "]";
+    }
+
+    @Override
+    public int compareTo(Livro o) {
+        return Integer.compare(this.emprestimos, o.emprestimos);
+    }
+
+    public void emprestar(){
+        this.emprestimos++;
     }
 
 }

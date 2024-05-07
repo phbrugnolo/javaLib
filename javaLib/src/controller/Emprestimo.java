@@ -22,8 +22,9 @@ public class Emprestimo extends Livros {
         nome = scan.nextLine();
 
         Livro livro = listaLivros.buscar(nome);
-
+        
         if (livro != null) {
+            livro.emprestar();
             livrosEmprestados.add(livro);
             livro.setQuantidade(livro.getQuantidade() - 1);
         } else {
